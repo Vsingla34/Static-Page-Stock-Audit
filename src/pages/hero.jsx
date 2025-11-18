@@ -4,15 +4,15 @@ export default function Hero() {
     className="bg-white"
     id="home"
     >
-      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:py-28 lg:px-8">
+      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:py-35 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left Side: Text Content */}
           <div className="text-center lg:text-left">
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-              <span className="block xl:inline">Beyond Bookkeeping</span>
+              <span className="block xl:inline">Audit Smarter Deliver Faster.</span>
             </h1>
             <p className="mt-4 text-lg text-gray-600 sm:mt-6 sm:text-xl">
-              India's first AI-powered bookkeeping – Automated tax compliances – Real time business insights.
+             StockCheck360 is a next-generation Stock Audit Software for Chartered Accountants, designed to bring automation.
             </p>
             <div className="mt-8 sm:mt-10">
               <a
@@ -22,15 +22,7 @@ export default function Hero() {
                 Book a Demo
               </a>
             </div>
-            <div className="mt-8">
-              <p className="text-sm font-semibold text-gray-500">Trusted by 100+ Businesses</p>
-              {/* Placeholder for trusted-by logos */}
-              <div className="flex justify-center lg:justify-start space-x-6 mt-4">
-                <span className="text-gray-400">Logo1</span>
-                <span className="text-gray-400">Logo2</span>
-                <span className="text-gray-400">Logo3</span>
-              </div>
-            </div>
+           
           </div>
           
           {/* Right Side: Image/Animation Placeholder */}

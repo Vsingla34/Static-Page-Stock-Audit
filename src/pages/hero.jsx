@@ -12,7 +12,15 @@ export default function Hero() {
               <span className="block xl:inline">Audit Smarter Deliver Faster.</span>
             </h1>
             <p className="mt-4 text-lg text-gray-600 sm:mt-6 sm:text-xl">
-             StockCheck360 is a next-generation Stock Audit Software for Chartered Accountants, designed to bring automation.
+            <span 
+            className="bg-indigo-600 text-transparent bg-clip-text font-bold"
+            >StockCheck360</span> is a next-generation Stock Audit Software for Chartered Accountants, designed to bring < span 
+            className="bg-indigo-600 text-transparent bg-clip-text font-bold "
+            >automation</span>, < span 
+            className="bg-indigo-600 text-transparent bg-clip-text font-bold "
+            >accuracy</span>, and < span 
+            className="bg-indigo-600 text-transparent bg-clip-text font-bold "
+            >real-time control</span> to every audit assignment.
             </p>
             <div className="mt-8 sm:mt-10">
               <a

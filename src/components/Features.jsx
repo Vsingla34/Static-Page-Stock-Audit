@@ -5,24 +5,24 @@ import { PackageCheck, Image as ImagePlaceholder } from 'lucide-react';
 // All the feature data extracted from your screenshots
 const featuresData = [
   {
-    title: 'Transaction Management Through AI',
-    description: "Experience unparalleled ease with automated transaction categorisation into expenses and revenues, verified by a personal bookkeeper for account accuracy in real time. Access business insights, Balance Sheet, P&L, and Cash Flow Statements.",
+    title: 'Unbreakable Data Integrity',
+    description: "Once recorded, your audit data cannot be deleted or modified. Every entry, review, and update is automatically logged ensuring transparency, traceability, and accountability across the audit team.",
   },
   {
-    title: 'Automated File Management',
-    description: "Upload or share your documents, and watch as our system instantly creates and organises files and folders. No hassle, no fuss–just seamless organisation. Enjoy automated renaming for clarity and timely reminders for any outstanding documents.",
+    title: 'Hassle-Free Automation for Efficiency',
+    description: "Reduce manual effort by up to 50%. StockCheck360 automates repetitive audit processes from working paper management to variance analysis delivering accurate and consistent results every time.",
   },
   {
-    title: 'Automated Tax Filings',
-    description: "Let your personal bookkeeper handle it all—prepares and files tax returns, including GST and TDS. Tax fillings are supported and verified by our team of domain experts, so you can focus on what matters most.",
+    title: 'Instant, Professional Reporting',
+    description: "Generate ready-to-share stock audit reports in a single click. The software consolidates all data and working papers into professional, CA-standard stock audit reports saving hours every week.",
   },
   {
-    title: 'Smart Invoicing and Payments',
-    description: "With just a few key details, our smart invoicing feature generates invoices for you in a snap. Plus, our payment surveillance and automatic reminders ensure you stay on top of your finances effortlessly.",
+    title: 'Intuitive and User-Friendly Design',
+    description: "No technical training required. The intuitive dashboard allows smooth onboarding, quick navigation, and effortless workflow management for all levels partners, managers, or trainees.",
   },
   {
-    title: 'Finance Concierge',
-    description: "Get a dedicated personal accountant, ready to assist with all your bookkeeping and compliance needs. Connect through a call button on a personalised dashboard or chat for support.",
+    title: 'Real-Time Admin–Auditor Collaboration',
+    description: "Ensure total visibility across multiple audits. Admins can assign, review, and track work in real time, while auditors can upload observations, evidence, and updates instantly, creating a centralized audit control system.",
   }
 ];
 
@@ -74,7 +74,7 @@ export default function Features() {
                 
                 {/* Text Column */}
                 <div className={isEven ? 'lg:order-2' : 'lg:order-1'}>
-                  <PackageCheck className="w-10 h-10 text-teal-500 mb-4" />
+                  <PackageCheck className="w-10 h-10 text-indigo-600" />
                   <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
                     {feature.title}
                   </h3>

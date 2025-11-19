@@ -5,35 +5,25 @@ export default function ValueProp() {
     className="bg-white py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Dark container with large rounded corners */}
-        <div className="bg-teal-900 rounded-3xl p-12 sm:p-16 lg:p-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="bg-indigo-800 rounded-3xl p-12 sm:p-16 lg:p-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12  items-center ">
             
             {/* Left Column: Heading */}
             <div>
               <h2 className="text-4xl sm:text-5xl font-extrabold text-white">
-                Service Dependency
-                <br />
-                to Service
-                <br />
-                Independency
+                Experience a New Standard of Stock Audit Management
               </h2>
             </div>
             
             {/* Right Column: Text and Button */}
             <div className="space-y-6">
-              <p className="text-lg text-teal-100 opacity-90">
-                With Febi, quit relying on any additional software or hiring
-                more staff for your finances. Febi's cutting-edge AI/ML
-                platform, coupled with our team of seasoned domain experts
-                including CAs and personal accountants, ensures seamless
-                management of all your accounting, tax compliance and
-                finance operations in real-time.
+              <p className="text-lg text-white opacity-90">
+               Say goodbye to Excel chaos and version confusion. With StockCheck360’s Stock Audit Automation Tool, every data entry is secure, traceable, and permanent. Once entered, figures can’t be reset or marked pending, ensuring absolute data integrity and audit reliability. The platform’s built-in automation instantly generates <span className="font-bold">ICAI-compliant stock audit reports</span>, eliminating manual compilation and formatting errors.
+
               </p>
-              <p className="text-lg text-teal-100 opacity-90">
-                Leverage our dedicated personal accountant for strategic
-                financial guidance and support. Experience the freedom of
-                focusing on your core business while Febi takes care of
-                your financial intricacies.
+              <p className="text-lg text-white opacity-90">
+               Designed for ease of use, StockCheck360 offers a clean, user-friendly interface  perfect for partners, managers, and article assistants alike. Seamless collaboration between Admins and Stock Auditors ensures transparency, faster reviews, and end-to-end audit control, from planning to reporting.
+
               </p>
               
               {/* Button */}

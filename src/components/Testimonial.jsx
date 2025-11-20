@@ -7,100 +7,107 @@ import 'swiper/css/navigation';
 // Import required modules
 import { Navigation } from 'swiper/modules';
 
-// --- IMPORT THE NEW ICON ---
-import { Quote } from 'lucide-react'; // Import the Quote icon
+// Import icons
+import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Placeholder data for testimonials
 const reviews = [
   {
-    quote: "Switching to Febi was one of the best decisions I've made for my business. Their 30-minute migration process made the transition painless, and I haven't looked back since.",
-    author: 'Rajat Jain',
-    title: 'Founder Director at Padup Ventures'
+    quote: "Purpose-built for Indian Chartered Accountant firms, StockCheck360 ensures accuracy in every stock audit process aligned with ICAI guidelines and statutory reporting formats.",
+    title: 'Uncompromised Accuracy'
   },
   {
-    quote: "Much of my operation is on the move, and I use WhatsApp and email extensively for almost everything, including uploading my invoices. Earlier, it was a nightmare, but the moment we started using Febi, I could upload my invoices on the go.",
-    author: 'Pankaj Thakar',
-    title: 'Founder & Chief Mentor at Padup Ventures'
+    quote: "Firms using StockCheck360 report up to 40% faster audit cycles. The automation engine eliminates redundant steps and allows partners to focus on review, insights, and client satisfaction.",
+    title: 'Time Saved, Productivity Multiplied'
   },
   {
-    quote: "I've been using Febi for about a year since its pilot stage. Although our current data load is minimal, I'm confident the tool can scale with our future needs. The team is able to customise our specifications.",
-    author: 'Chetan Rana',
-    title: 'CFO, Titan Capital Winners Fund'
+    quote: "Modern audits are team-driven. StockCheck360 centralizes audit files, communications, and approvals — ensuring your entire team works in sync, even across multiple branches or clients.",
+    title: 'Collaboration that Scales'
   },
   {
-    quote: "Another great testimonial! Febi has saved us countless hours in manual data entry, allowing us to focus on growing our core business. The AI-powered insights are a game-changer.",
-    author: 'Jane Doe',
-    title: 'CEO, Tech Innovations'
+    quote: "Whether you handle 10 audits or 100+, StockCheck360 scales effortlessly. It’s cloud-ready, secure, and optimized for high data volumes perfect for fast-growing CA practices.",
+    title: 'Scalable for Growth'
   }
 ];
 
-// --- WE NO LONGER NEED THE OLD QuoteIcon() FUNCTION ---
-// (It has been deleted)
-
-// The main Testimonials component
 export default function Testimonials() {
   return (
     <div 
-    id='insights'
-    className="bg-white py-16 sm:py-24 relative">
+      id='insights'
+      className="bg-white py-20 sm:py-28 relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            What Our Clients Say About Us
+        
+        {/* Header Section */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
+            Why choose StockCheck<span className='bg-indigo-600 bg-clip-text text-transparent'>360</span>?
           </h2>
+          <p className="mt-4 text-lg text-gray-500">
+            Empowering Chartered Accountants with next-gen tools for smarter audits.
+          </p>
         </div>
 
-        <div className="mt-16 relative">
+        {/* Carousel Section */}
+        <div className="relative">
           <Swiper
             modules={[Navigation]}
             navigation={{
               nextEl: '.swiper-button-next-custom',
               prevEl: '.swiper-button-prev-custom',
             }}
-            spaceBetween={30}
+            spaceBetween={24}
             slidesPerView={1}
             loop={true}
             breakpoints={{
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
+              640: { slidesPerView: 1, spaceBetween: 20 },
+              768: { slidesPerView: 2, spaceBetween: 24 },
+              1024: { slidesPerView: 3, spaceBetween: 32 },
             }}
-            className="!pb-4 !px-12"
+            className="!pb-12 !px-4"
           >
             {reviews.map((review, index) => (
-              <SwiperSlide key={index} className="h-full">
-                <div className="bg-emerald-50 rounded-2xl p-8 flex flex-col h-full shadow-sm">
-                  <div className="flex-shrink-0">
-                    {/* --- USE THE NEW ICON HERE --- */}
-                    {/* We set the fill and stroke to the same color to make it solid */}
-                    <Quote
-                      className="w-16 h-16 text-teal-400 fill-teal-400"
-                      strokeWidth={1} 
+              <SwiperSlide key={index} className="h-auto">
+                <div className="group h-full bg-violet-200 rounded-[2rem] p-8 relative overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+                  
+                  {/* Decorative Background Icon (Watermark style) */}
+                  <div className="absolute -top-4 -right-4 opacity-40 rotate-12 transition-transform duration-500 group-hover:rotate-0 group-hover:scale-110">
+                    <Quote 
+                      className="w-32 h-32 text-white fill-white" 
+                      strokeWidth={0}
                     />
                   </div>
-                  <blockquote className="mt-6 flex-grow">
-                    <p className="text-gray-700 text-base">
+
+                  {/* Card Content */}
+                  <div className="relative z-10 flex flex-col h-full">
+                    {/* Title First (Modern Hierarchy) */}
+                    <h3 className="text-xl font-bold text-gray-900 mb-4 pr-8">
+                      {review.title}
+                    </h3>
+
+                    {/* Quote Text */}
+                    <p className="text-gray-700 text-base leading-relaxed flex-grow">
                       {review.quote}
                     </p>
-                  </blockquote>
-                  <footer className="mt-6">
-                    <div className="font-semibold text-gray-900">{review.author}</div>
-                    <div className="text-gray-600 text-sm">{review.title}</div>
-                  </footer>
+
+                    {/* Optional: Small visual anchor at bottom */}
+                    <div className="mt-6 pt-6 border-t border-violet-300/50 flex items-center">
+                       <div className="h-1 w-12 bg-indigo-600 rounded-full"></div>
+                    </div>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
 
-          {/* Custom Navigation Arrows (remain the same) */}
-          <div className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white rounded-full shadow-lg cursor-pointer hover:bg-gray-100 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-gray-700">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-          </div>
-          <div className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white rounded-full shadow-lg cursor-pointer hover:bg-gray-100 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-gray-700">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
+          {/* Modern Navigation Buttons */}
+          <div className="flex justify-center gap-4 mt-8">
+            <button className="swiper-button-prev-custom group flex items-center justify-center w-12 h-12 bg-white border border-gray-200 rounded-full shadow-sm hover:bg-indigo-50 hover:border-indigo-100 transition-all duration-200 focus:outline-none active:scale-95">
+              <ChevronLeft className="w-6 h-6 text-gray-600 group-hover:text-indigo-600" />
+            </button>
+            <button className="swiper-button-next-custom group flex items-center justify-center w-12 h-12 bg-white border border-gray-200 rounded-full shadow-sm hover:bg-indigo-50 hover:border-indigo-100 transition-all duration-200 focus:outline-none active:scale-95">
+              <ChevronRight className="w-6 h-6 text-gray-600 group-hover:text-indigo-600" />
+            </button>
           </div>
 
         </div>

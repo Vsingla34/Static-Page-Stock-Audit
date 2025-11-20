@@ -1,56 +1,87 @@
-import { useState } from 'react';
-// Import Link from react-scroll
+import { useState, useEffect } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
-// Import icons for the mobile menu
-import { Menu, X, ArrowRight } from 'lucide-react'; 
-import Logo from '../logo/Logo';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import logo from "../../../public/First.png"; // Your logo icon
 
-
-// Data for navigation links
 const navItems = [
   { name: 'About', to: 'about' },
   { name: 'Features', to: 'features' },
   { name: 'Insights', to: 'insights' },
-  { name: 'Partners', to: 'partners' },
+  { name: 'Contact Us', to: 'contactUs' },
 ];
 
 export default function Navbar() {
-  // State to manage if the mobile menu is open or closed
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // The 'scrolled' state is no longer needed for background transparency but can be kept if you plan other scroll-dependent animations.
+  // For now, I'll remove the dependency to avoid unnecessary re-renders related to background.
+  const [scrolled, setScrolled] = useState(false); // Can be removed if no other scroll effects are needed
 
-  // Common props for all scroll links
+  // If you *only* want the shadow to appear on scroll, keep this useEffect.
+  // If you want a consistent shadow always, remove the useEffect and the 'scrolled' state entirely.
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]); // Keep dependency if 'scrolled' is used for shadow or other effects
+
   const scrollProps = {
     spy: true,
     smooth: true,
     duration: 600,
-    offset: -80, // Adjusts for the navbar height
+    offset: -80,
     activeClass: "text-indigo-600 font-semibold",
+    onClick: () => isMobileMenuOpen && setIsMobileMenuOpen(false),
   };
 
-  // Shared styles for desktop links for a clean code structure
-  const desktopLinkClasses = "relative text-gray-600 hover:text-indigo-600 font-medium px-3 py-2 text-base cursor-pointer transition-all duration-300 ease-in-out after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-600 hover:after:w-full";
+  const desktopLinkClasses = "relative text-gray-700 hover:text-indigo-600 font-medium px-3 py-2 text-base cursor-pointer transition-colors duration-200 ease-in-out group";
+
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: { opacity: 1, height: "auto", transition: { duration: 0.3, ease: "easeOut" } },
+    exit: { opacity: 0, height: 0, transition: { duration: 0.2, ease: "easeIn" } }
+  };
+
+  const mobileLinkVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  };
 
   return (
-    // Main Container: Fixed, Glassmorphism effect
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
+        bg-white border-b border-gray-100 ${scrolled ? 'shadow-lg' : 'shadow-sm'}` // Solid white background, shadow appears on scroll
+      }
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
 
-          {/* --- LOGO SECTION (Perfectly Aligned) --- */}
+          {/* --- LOGO SECTION --- */}
           <div className="flex-shrink-0">
             <ScrollLink
               to="home"
               smooth={true}
               duration={500}
-              // FIX: 'flex items-center' centers vertical, 'gap-2' handles spacing
-              className="flex items-center gap-3 cursor-pointer group"
+              className="inline-block cursor-pointer transition-transform duration-200 hover:scale-105"
             >
-              <Logo/>
+              <img
+                className='h-15 w-auto' // Explicitly set height and auto width for responsiveness
+                src={logo}
+                alt="StockCheck360 Logo"
+              />
             </ScrollLink>
           </div>
 
           {/* --- DESKTOP NAVIGATION --- */}
-          <div className="hidden md:flex md:items-center md:space-x-6">
+          <div className="hidden md:flex md:items-center md:space-x-7">
             {navItems.map((item) => (
               <ScrollLink
                 key={item.name}
@@ -59,21 +90,16 @@ export default function Navbar() {
                 className={desktopLinkClasses}
               >
                 {item.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
               </ScrollLink>
             ))}
-
-            {/* Career Link (External) */}
-          
-
-            {/* CTA Button */}
-            
           </div>
 
           {/* --- MOBILE MENU BUTTON --- */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-indigo-600 hover:bg-gray-100 focus:outline-none transition-colors duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-indigo-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors duration-200"
             >
               <span className="sr-only">Open main menu</span>
               {isMobileMenuOpen ? (
@@ -86,31 +112,39 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* --- MOBILE MENU (Slide Down Animation) --- */}
-      <div 
-        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="px-4 pt-2 pb-6 space-y-2 bg-white/95 border-t border-gray-100 shadow-lg">
-          {navItems.map((item) => (
-            <ScrollLink
-              key={item.name}
-              to={item.to}
-              {...scrollProps}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-3 rounded-lg text-base font-medium text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
-            >
-              {item.name}
-            </ScrollLink>
-          ))}
-          
-          <div className="border-t border-gray-100 my-2 pt-2">
-            
-           
-          </div>
-        </div>
-      </div>
+      {/* --- MOBILE MENU (Framer Motion Animation) --- */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            variants={mobileMenuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="md:hidden overflow-hidden bg-white border-t border-gray-100 shadow-lg" // Solid white for mobile menu too
+          >
+            <div className="px-4 pt-2 pb-6 space-y-2">
+              {navItems.map((item, i) => (
+                <motion.div
+                  key={item.name}
+                  variants={mobileLinkVariants}
+                  initial="hidden"
+                  animate="visible"
+                  custom={i}
+                  transition={{ delay: i * 0.05 }}
+                >
+                  <ScrollLink
+                    to={item.to}
+                    {...scrollProps}
+                    className="block px-3 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
+                  >
+                    {item.name}
+                  </ScrollLink>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

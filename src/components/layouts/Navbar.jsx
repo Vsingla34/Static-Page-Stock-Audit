@@ -79,7 +79,8 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
 
           {/* --- LOGO SECTION --- */}
-          <div className="flex-shrink-0">
+          {/* Added -ml-2 to correct the visual alignment */}
+          <div className="flex-shrink-0 flex items-center -ml-2">
             <ScrollLink
               to="home"
               smooth={true}
@@ -87,7 +88,8 @@ export default function Navbar() {
               className="inline-block cursor-pointer transition-transform duration-200 hover:scale-105"
             >
               <img
-                className='h-15 w-auto'
+                // UPDATED: Responsive sizes (h-10 on mobile, h-12 on sm, h-14 on md)
+                className='h-10 sm:h-12 md:h-14 w-auto'
                 src={logo}
                 alt="StockCheck360 Logo"
               />

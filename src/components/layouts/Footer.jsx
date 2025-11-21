@@ -1,111 +1,107 @@
 import React from 'react';
-import { Linkedin, Facebook, Twitter, Instagram, Youtube, Book } from 'lucide-react';
-
-// Data for the links
-const resources = [
-  { name: 'FAQs', href: '#' },
-  { name: 'Glossary', href: '#' },
-  { name: 'Terms of Service', href: '#' },
-  { name: 'Privacy & Security', href: '#' },
-  { name: 'Licenses & Certifications', href: '#' },
-  { name: 'IT Security Policy', href: '#' },
-];
-
-const socialLinks = [
-  { icon: Linkedin, href: '#', name: 'LinkedIn' },
-  { icon: Facebook, href: '#', name: 'Facebook' },
-  { icon: Twitter, href: '#', name: 'Twitter' },
-  { icon: Instagram, href: '#', name: 'Instagram' },
-  { icon: Youtube, href: '#', name: 'YouTube' },
-  { icon: Book, href: '#', name: 'Medium' }, // Using Book for Medium
-];
+import { Linkedin, Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, ShieldCheck, ArrowRight } from 'lucide-react';
+import logo from "../../../public/First.png"
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-gray-300"> {/* Using dark bg */}
+    <footer className="bg-slate-900 text-slate-300 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
-          {/* Column 1: Contact & Address */}
+          {/* Column 1: Brand & Description */}
           <div className="space-y-6">
-            <a href="#" className="text-3xl font-bold text-white">Febi.ai</a>
-            <div>
-              <h4 className="font-semibold text-white mb-2">Contact</h4>
-              <ul className="space-y-1 text-sm">
-                <li>info@febi.ai</li> {/* */}
-                <li>9266700901</li> {/* */}
-                <li>9266700902</li> {/* */}
-              </ul>
+            <div className="flex items-center gap-2">
+              {/* Logo Placeholder - using ShieldCheck to avoid broken image links */}
+             
             </div>
-            <div>
-              <h4 className="font-semibold text-white mb-2">Address</h4>
-              <p className="text-sm">
-                45 Arjun Marg, DLF Phase I<br />
-                Gurgaon -122002
-              </p> {/* */}
-            </div>
-          </div>
-          
-          {/* Column 2: Resources */}
-          <div>
-            <h4 className="font-semibold text-white mb-4">Resources</h4>
-            <ul className="space-y-3 text-sm">
-              {resources.map((item) => (
-                <li key={item.name}>
-                  <a href={item.href} className="hover:text-white transition-colors">
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          {/* Column 3: Follow (Newsletter) */}
-          <div className="lg:col-span-2">
-            <h4 className="font-semibold text-white mb-4">Follow</h4>
-            <p className="text-sm mb-4">
-              Subscribe to our newsletter to stay updated on our latest
-              features releases and industry trends.
-            </p> {/* */}
-            <form action="#" className="flex flex-col sm:flex-row gap-2">
-              <label htmlFor="email-address" className="sr-only">Email</label>
-              <input
-                type="email"
-                id="email-address"
-                autoComplete="email"
-                required
-                className="w-full px-4 py-2 rounded-md bg-slate-800 border-slate-700 text-white placeholder-gray-400 focus:ring-teal-500 focus:border-teal-500"
-                placeholder="Email"
-              />
-              <button
-                type="submit"
-                className="px-6 py-2 bg-white text-slate-900 font-medium rounded-md hover:bg-gray-200 transition-colors flex-shrink-0"
-              >
-                Subscribe
-              </button> {/* */}
-            </form>
-            
+            <p className="text-sm leading-relaxed text-slate-400">
+              The comprehensive stock audit solution designed for Chartered Accountants. Automate inventory verification, eliminate errors, and generate reports in minutes.
+            </p>
             {/* Social Icons */}
-            <div className="flex space-x-4 mt-6">
-              {socialLinks.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-400 hover:text-white transition-colors"
+            <div className="flex gap-4 pt-2">
+              {[Linkedin, Twitter, Facebook, Instagram].map((Icon, idx) => (
+                <a 
+                  key={idx} 
+                  href="#" 
+                  className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  <span className="sr-only">{item.name}</span>
-                  <item.icon className="w-6 h-6" />
+                  <Icon size={18} />
                 </a>
               ))}
             </div>
           </div>
           
+          {/* Column 2: Quick Links */}
+          <div>
+            <h4 className="font-semibold text-white text-lg mb-6">Platform</h4>
+            <ul className="space-y-3 text-sm">
+              {['Home', 'Features', 'Pricing', 'Case Studies', 'Request Demo'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="hover:text-indigo-400 transition-colors duration-200 flex items-center gap-2 group">
+                    <span className="w-1 h-1 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Contact Info */}
+          <div>
+            <h4 className="font-semibold text-white text-lg mb-6">Contact Us</h4>
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-start gap-3 group cursor-pointer">
+                <MapPin className="w-5 h-5 text-indigo-500 mt-0.5 group-hover:text-indigo-400 transition-colors" />
+                <span>
+                  123 Business Park, Sector 62,<br />
+                  Noida, UP 201301
+                </span>
+              </li>
+              <li className="flex items-center gap-3 group cursor-pointer">
+                <Mail className="w-5 h-5 text-indigo-500 group-hover:text-indigo-400 transition-colors" />
+                <a href="mailto:info@stockcheck360.com" className="group-hover:text-white transition-colors">
+                  info@stockcheck360.com
+                </a>
+              </li>
+              <li className="flex items-center gap-3 group cursor-pointer">
+                <Phone className="w-5 h-5 text-indigo-500 group-hover:text-indigo-400 transition-colors" />
+                <span className="group-hover:text-white transition-colors">+91 98765 00000</span>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Column 4: Newsletter */}
+          <div>
+            <h4 className="font-semibold text-white text-lg mb-4">Stay Updated</h4>
+            <p className="text-sm mb-4 text-slate-400">
+              Subscribe to get the latest audit regulations and feature updates.
+            </p>
+            
+            <form className="relative">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full bg-slate-800 text-white border border-slate-700 rounded-lg py-3 pl-4 pr-12 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder-slate-500"
+              />
+              <button 
+                type="submit" 
+                className="absolute right-1.5 top-1.5 p-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-500/30"
+              >
+                <ArrowRight size={16} />
+              </button>
+            </form>
+          </div>
+          
         </div>
         
         {/* Bottom Bar */}
-        <div className="mt-12 border-t border-slate-700 pt-8 text-center text-sm">
-          <p>&copy; 2024 Febi.ai. All rights reserved.</p>
-          <p className="mt-1">This is a clone for demonstration purposes.</p>
+        <div className="mt-12 border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+          <p>&copy; {new Date().getFullYear()} StockCheck360. All rights reserved.</p>
+          <div className="flex space-x-6">
+            <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-slate-300 transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-slate-300 transition-colors">Cookie Settings</a>
+          </div>
         </div>
       </div>
     </footer>

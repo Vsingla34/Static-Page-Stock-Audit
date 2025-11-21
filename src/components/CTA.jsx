@@ -95,16 +95,31 @@ export default function CTA() {
                   />
                 </div>
 
-                {/* Company */}
-                <div className="space-y-1">
-                  <label htmlFor="company" className="text-sm font-medium text-gray-700">Company Name</label>
-                  <input
-                    type="text"
-                    name="company"
-                    id="company"
-                    placeholder="Audit Firm LLP"
-                    className="block w-full rounded-lg border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 focus:bg-white focus:border-indigo-500 focus:ring-indigo-500 transition-all outline-none border"
-                  />
+                {/* Company & Industry Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {/* Company */}
+                  <div className="space-y-1">
+                    <label htmlFor="company" className="text-sm font-medium text-gray-700">Company Name</label>
+                    <input
+                      type="text"
+                      name="company"
+                      id="company"
+                      placeholder="Audit Firm LLP"
+                      className="block w-full rounded-lg border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 focus:bg-white focus:border-indigo-500 focus:ring-indigo-500 transition-all outline-none border"
+                    />
+                  </div>
+
+                  {/* Industry - ADDED HERE */}
+                  <div className="space-y-1">
+                    <label htmlFor="industry" className="text-sm font-medium text-gray-700">Industry</label>
+                    <input
+                      type="text"
+                      name="industry"
+                      id="industry"
+                      placeholder="e.g. Retail, FMCG"
+                      className="block w-full rounded-lg border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 focus:bg-white focus:border-indigo-500 focus:ring-indigo-500 transition-all outline-none border"
+                    />
+                  </div>
                 </div>
                 
                 {/* Message */}
@@ -119,7 +134,7 @@ export default function CTA() {
                   />
                 </div>
                 
-                {/* Submit Button - Matches the 'Book a Demo' button color */}
+                {/* Submit Button */}
                 <button
                   type="submit"
                   className="group w-full flex items-center justify-center gap-2 py-4 px-6 border border-transparent rounded-lg text-base font-bold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transform hover:-translate-y-0.5"

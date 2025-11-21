@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import logo from "../../../public/First.png"; // Your logo icon
 
@@ -13,25 +13,30 @@ const navItems = [
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // The 'scrolled' state is no longer needed for background transparency but can be kept if you plan other scroll-dependent animations.
-  // For now, I'll remove the dependency to avoid unnecessary re-renders related to background.
-  const [scrolled, setScrolled] = useState(false); // Can be removed if no other scroll effects are needed
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
-  // If you *only* want the shadow to appear on scroll, keep this useEffect.
-  // If you want a consistent shadow always, remove the useEffect and the 'scrolled' state entirely.
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
+  // Use Framer Motion's hook for performant scroll detection
+  const { scrollY } = useScroll();
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrolled]); // Keep dependency if 'scrolled' is used for shadow or other effects
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    
+    // 1. Manage Shadow State
+    if (latest > 50 && !scrolled) {
+      setScrolled(true);
+    } else if (latest <= 50 && scrolled) {
+      setScrolled(false);
+    }
+
+    // 2. Manage Hide/Show Animation
+    // Hide if scrolling down AND past 150px AND mobile menu is closed
+    if (latest > previous && latest > 150 && !isMobileMenuOpen) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
 
   const scrollProps = {
     spy: true,
@@ -43,6 +48,12 @@ export default function Navbar() {
   };
 
   const desktopLinkClasses = "relative text-gray-700 hover:text-indigo-600 font-medium px-3 py-2 text-base cursor-pointer transition-colors duration-200 ease-in-out group";
+
+  // Animation variants for the Navbar itself
+  const navbarVariants = {
+    visible: { y: 0, opacity: 1 },
+    hidden: { y: "-100%", opacity: 0 },
+  };
 
   const mobileMenuVariants = {
     hidden: { opacity: 0, height: 0 },
@@ -56,10 +67,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
-        bg-white border-b border-gray-100 ${scrolled ? 'shadow-lg' : 'shadow-sm'}` // Solid white background, shadow appears on scroll
-      }
+    <motion.nav
+      variants={navbarVariants}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      className={`fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-100 ${
+        scrolled ? 'shadow-lg' : 'shadow-sm'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
@@ -73,7 +87,7 @@ export default function Navbar() {
               className="inline-block cursor-pointer transition-transform duration-200 hover:scale-105"
             >
               <img
-                className='h-15 w-auto' // Explicitly set height and auto width for responsiveness
+                className='h-15 w-auto'
                 src={logo}
                 alt="StockCheck360 Logo"
               />
@@ -120,7 +134,7 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="md:hidden overflow-hidden bg-white border-t border-gray-100 shadow-lg" // Solid white for mobile menu too
+            className="md:hidden overflow-hidden bg-white border-t border-gray-100 shadow-lg"
           >
             <div className="px-4 pt-2 pb-6 space-y-2">
               {navItems.map((item, i) => (
@@ -145,6 +159,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'; 
 import Laptop from "../../public/Laptop.png"
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function Hero() {
   // Animation variants for the text elements
@@ -66,12 +67,13 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
             >
-              <a
-                href="#"
+              <ScrollLink
+                to="contactUs"
+                smooth={true}
                 className="inline-block px-8 py-3 bg-indigo-600 text-white font-medium rounded-md shadow-md hover:bg-indigo-700 transition-colors duration-200"
               >
                 Book a Demo
-              </a>
+              </ScrollLink>
             </motion.div>
 
           </div>

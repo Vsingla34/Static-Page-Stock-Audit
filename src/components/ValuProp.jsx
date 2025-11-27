@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import {Link as ScrollLink} from "react-scroll"
 
 export default function ValueProp() {
   return (
@@ -49,13 +50,14 @@ export default function ValueProp() {
               
               {/* Button */}
               <div className="pt-4">
-                <a
-                  href="#"
+                <ScrollLink
+                  to="contactUs"
+                  smooth={true}
                   className="group inline-flex items-center justify-center px-8 py-4 bg-white text-indigo-900 font-bold text-lg rounded-xl shadow-lg hover:bg-indigo-50 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-900 focus:ring-white"
                 >
                   Book a Demo
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
+                </ScrollLink>
               </div>
             </div>
 

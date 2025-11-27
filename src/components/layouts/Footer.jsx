@@ -52,20 +52,23 @@ export default function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3 group cursor-pointer">
                 <MapPin className="w-5 h-5 text-indigo-500 mt-0.5 group-hover:text-indigo-400 transition-colors" />
-                <span>
-                  123 Business Park, Sector 62,<br />
-                  Noida, UP 201301
+                          <span>
+                            201 second floor building
+          No-80, near Jain school uniform
+          Pillar No-52, Laxmi Nagar,
+          Delhi - 110092<br />
+            
                 </span>
               </li>
               <li className="flex items-center gap-3 group cursor-pointer">
                 <Mail className="w-5 h-5 text-indigo-500 group-hover:text-indigo-400 transition-colors" />
                 <a href="mailto:info@stockcheck360.com" className="group-hover:text-white transition-colors">
-                  info@stockcheck360.com
+                  info.stockcheck360@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3 group cursor-pointer">
                 <Phone className="w-5 h-5 text-indigo-500 group-hover:text-indigo-400 transition-colors" />
-                <span className="group-hover:text-white transition-colors">+91 98765 00000</span>
+                <span className="group-hover:text-white transition-colors">+91 88608 83031</span>
               </li>
             </ul>
           </div>

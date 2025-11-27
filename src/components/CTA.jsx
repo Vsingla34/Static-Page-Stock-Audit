@@ -102,15 +102,14 @@ export default function CTA() {
 
   return (
     <section id='contactUs' className="relative py-20 sm:py-32 bg-gray-50 overflow-hidden">
-       {/* ... (Keep the rest of your UI code exactly the same as before) ... */}
-       {/* Just paste the return(...) block from the previous file here */}
+      
        <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
-          {/* Left Column */}
+          
           <div className="space-y-8 text-center lg:text-left">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
@@ -141,7 +140,7 @@ export default function CTA() {
             </div>
           </div>
           
-          {/* Right Column: Form */}
+          
           <div className="relative">
             <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-2xl blur opacity-20"></div>
             

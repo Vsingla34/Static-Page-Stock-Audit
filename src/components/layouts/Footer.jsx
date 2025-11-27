@@ -35,7 +35,7 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-white text-lg mb-6">Platform</h4>
             <ul className="space-y-3 text-sm">
-              {['Home', 'Features', 'Pricing', 'Case Studies', 'Request Demo'].map((item) => (
+              {['Home', 'Features', 'Request Demo'].map((item) => (
                 <li key={item}>
                   <a href="#" className="hover:text-indigo-400 transition-colors duration-200 flex items-center gap-2 group">
                     <span className="w-1 h-1 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
@@ -46,17 +46,18 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Contact Info */}
+          {/* Column 3: Contact Info */}   
           <div>
             <h4 className="font-semibold text-white text-lg mb-6">Contact Us</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3 group cursor-pointer">
                 <MapPin className="w-5 h-5 text-indigo-500 mt-0.5 group-hover:text-indigo-400 transition-colors" />
                           <span>
-                            201 second floor building
-          No-80, near Jain school uniform
-          Pillar No-52, Laxmi Nagar,
-          Delhi - 110092<br />
+             FF-05, Plot No. 20, Block H1/A, 
+
+Sector 63 Noida, Gautam Buddha Nagar, Noida, 
+
+Uttar Pradesh 201301, India <br />
             
                 </span>
               </li>

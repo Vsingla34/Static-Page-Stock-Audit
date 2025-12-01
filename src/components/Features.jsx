@@ -72,7 +72,7 @@ export default function Features() {
             One Platform, <span className="text-indigo-600">Endless Possibilities</span>
           </h2>
           <p className="mt-6 text-lg text-gray-600 leading-relaxed">
-            See what makes Febi the one-stop solution for modern entrepreneurs and audit teams.
+            See what makes StockCheck360 the one-stop solution for modern entrepreneurs and audit teams.
           </p>
         </motion.div>
 
@@ -128,7 +128,7 @@ export default function Features() {
                     {feature.description}
                   </p>
 
-                  {/* Optional: Add a 'Learn more' link styling */}
+                 
                   <div className="flex items-center text-indigo-600 font-semibold cursor-pointer group/link">
                     <scrollTo></scrollTo>
                     <svg className="w-4 h-4 ml-2 transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

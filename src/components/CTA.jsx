@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Send, CheckCircle2, TrendingUp, ShieldCheck, Loader2 } from 'lucide-react';
-import emailjs from '@emailjs/browser'; // We still use EmailJS for emails
+import emailjs from '@emailjs/browser';
 
 export default function CTA() {
   const formRef = useRef();
@@ -25,35 +25,9 @@ export default function CTA() {
     setLoading(true);
     setStatus({ type: '', message: '' });
 
-    // Environment Variables
-    const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-    const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_KEY; // This is your anon public key
-
     try {
-      // --- 1. Save to Supabase using FETCH (No library needed) ---
-      const response = await fetch(`${SUPABASE_URL}/rest/v1/demo_requests`, {
-        method: 'POST',
-        headers: {
-          'apikey': SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=minimal' // Don't return the whole object, just save it
-        },
-        body: JSON.stringify({
-          full_name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          company_name: formData.company,
-          industry: formData.industry,
-          message: formData.comments,
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to save to database');
-      }
-
-      // --- 2. Send Email to Admin (You) ---
+      // --- 1. Send Email to Admin (You) ---
+      // This sends the details to your inbox
       await emailjs.send(
         'service_661j84g', 
         'template_9n45it8',
@@ -68,7 +42,8 @@ export default function CTA() {
         '-BniL0zh2vmU_VhD1'
       );
 
-      // --- 3. Send Auto-Reply Email to Visitor ---
+      // --- 2. Send Auto-Reply Email to Visitor ---
+      // This confirms to the user that you received their request
       await emailjs.send(
         'service_661j84g',
         'template_yjp3doa',
@@ -109,7 +84,7 @@ export default function CTA() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
-          
+          {/* Left Side: Text Content */}
           <div className="space-y-8 text-center lg:text-left">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
@@ -140,7 +115,7 @@ export default function CTA() {
             </div>
           </div>
           
-          
+          {/* Right Side: Form */}
           <div className="relative">
             <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-2xl blur opacity-20"></div>
             
